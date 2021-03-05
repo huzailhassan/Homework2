@@ -18,8 +18,8 @@ public class LinkedStack<T> implements StackInterface<T>
        T top = peek();  // Might throw EmptyStackException
        // Assertion: topNode != null
        topNode = topNode.getNext();
-    
        return top;
+    
     } // end pop
 
     public T peek() {
@@ -39,13 +39,12 @@ public class LinkedStack<T> implements StackInterface<T>
 
     public ResizableArrayStack<T> operatorStack;
     public String postFix;
-
-    public String nextCharacter;
-
+    //These will be char because we are reading in a string
+    public T nextCharacter;
     char topOperator;
 
-    static int precedence(char c){
-        switch (c){
+    public int precedence(T t) {
+        switch ((char) t) {
             case '+':
             case '-':
                 return 1;
@@ -58,39 +57,47 @@ public class LinkedStack<T> implements StackInterface<T>
         return -1;
     }
 
-    public String convertToPostfix() {
-        while (!) {
-            switch (nextCharacter = ) {
-                case variable:
+    int i = 0;
+    public String convertToPostfix(String infix[]) {
+        while (infix[i] != null) {
+            switch ((char) nextCharacter) {
+                case 'd':
+                    operatorStack.push(nextCharacter);
+                    i++;
                     break;
                 case '^':
                     operatorStack.push(nextCharacter);
+                    i++;
                     break;
                 case '+' : case '-' : case '*' : case '/' :
-                    while (operatorStack.isEmpty()==false && precedence(operatorStack.peek())>=precedence(c)) {
+                    T c;
+                    while (operatorStack.isEmpty() == false && precedence(operatorStack.peek()) >= precedence(c)) {
                         operatorStack.pop();
                     }
                     operatorStack.push(nextCharacter);
+                    i++;
                     break;
                 case '(':
                     operatorStack.push(nextCharacter);
+                    i++;
                     break;
                 case ')':
-                    topOperator = operatorStack.pop();
+                    topOperator = (char) operatorStack.pop();
                     while(topOperator!='(') {
-                        postfix += x;
-                        topOperator = operatorStack.pop();
+                        postFix += topOperator;
+                        topOperator = (char) operatorStack.pop();
                     }
+                    i++;
                     break;
-                default: 
+                default:
                     break;
-        
-        }
-        while (!operatorStack.isEmpty()) {
-            topOperator = operatorStack.pop();
 
-        }
-        return postfix;
+            }
+            while (!operatorStack.isEmpty()) {
+                topOperator = (char) operatorStack.pop();
+
+            }
+            return postFix;
     }
 
    return null;
