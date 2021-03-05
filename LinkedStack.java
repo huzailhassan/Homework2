@@ -37,13 +37,9 @@ public class LinkedStack<T> implements StackInterface<T>
         topNode = null;
     }
 
-    public ResizableArrayStack<T> operatorStack;
-    public String postFix;
-    //These will be char because we are reading in a string
-    public T nextCharacter;
-    char topOperator;
 
-    public int precedence(T t) {
+
+    public int precedence(Character t) {
         switch ((char) t) {
             case '+':
             case '-':
@@ -57,21 +53,30 @@ public class LinkedStack<T> implements StackInterface<T>
         return -1;
     }
 
+    ResizableArrayStack <Character> operatorStack = new ResizableArrayStack<Character>();
+    String postFix;
+   //These will be char because we are reading in a string
+    char nextCharacter;
+    char topOperator;
+
     int i = 0;
-    public String convertToPostfix(String infix[]) {
-        while (infix[i] != null) {
-            switch ((char) nextCharacter) {
-                case 'd':
-                    operatorStack.push(nextCharacter);
-                    i++;
-                    break;
+    public String convertToPostfix(char infix[]) {
+        while (infix[i] <= infix.length) {
+            nextCharacter =  infix[i];
+            switch (nextCharacter) {
                 case '^':
                     operatorStack.push(nextCharacter);
                     i++;
                     break;
-                case '+' : case '-' : case '*' : case '/' :
-                    T c;
-                    while (operatorStack.isEmpty() == false && precedence(operatorStack.peek()) >= precedence(c)) {
+                case '+' : case '-': 
+                    while (operatorStack.isEmpty() == false && 1 <= precedence(operatorStack.peek())) {
+                        operatorStack.pop();
+                    }
+                    operatorStack.push(nextCharacter);
+                    i++;
+                    break;
+                case '*' : case '/': 
+                    while (operatorStack.isEmpty() == false && 2 <= precedence(operatorStack.peek())) {
                         operatorStack.pop();
                     }
                     operatorStack.push(nextCharacter);
@@ -82,20 +87,22 @@ public class LinkedStack<T> implements StackInterface<T>
                     i++;
                     break;
                 case ')':
-                    topOperator = (char) operatorStack.pop();
+                    topOperator =  operatorStack.pop();
                     while(topOperator!='(') {
                         postFix += topOperator;
-                        topOperator = (char) operatorStack.pop();
+                        topOperator = operatorStack.pop();
                     }
                     i++;
                     break;
+                //For any other characters. 
                 default:
+                    operatorStack.push(nextCharacter);
+                    i++;
                     break;
-
             }
             while (!operatorStack.isEmpty()) {
                 topOperator = (char) operatorStack.pop();
-
+                postFix += topOperator;
             }
             return postFix;
     }

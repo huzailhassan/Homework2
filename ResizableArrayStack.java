@@ -35,10 +35,10 @@ public void ArrayStack(int initialCapacity) {
  	integrityOK = true;
 } // end constructor
   
-public void push(T nextCharacter) {
+public void push(T newEntry) {
     checkIntegrity();
     ensureCapacity();
-    stack[topIndex + 1] = nextCharacter;
+    stack[topIndex + 1] = newEntry;
     topIndex++;
 } // end push
 
@@ -85,8 +85,6 @@ public void clear() {
    } // end while
       //Assertion: topIndex is -1
 } // end clear
-
-
 
 
 
