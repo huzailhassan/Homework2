@@ -66,7 +66,7 @@ public class LinkedStack<T> implements StackInterface<T>
             switch (nextCharacter) {
                 case '^':
                     operatorStack.push(nextCharacter);
-                    i++;
+                    i++; 
                     break;
                 case '+' : case '-': 
                     while (operatorStack.isEmpty() == false && 1 <= precedence(operatorStack.peek())) {
