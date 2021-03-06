@@ -12,6 +12,6 @@ public class LinkedStackTest {
     
     @Test
     public void convertToPostfix_Given() {
-        assertEquals(EXPECTED_POSTFIX, Convertor.convertToPostfix(GIVEN_INFIX_EXPRESSION.toCharArray()));
+        assertEquals(EXPECTED_POSTFIX, Converter.convertToPostfix(GIVEN_INFIX_EXPRESSION.toCharArray()));
     }
 }

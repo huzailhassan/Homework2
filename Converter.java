@@ -1,4 +1,4 @@
-public class Convertor {
+public class Converter {
     
     private static int precedence(Character t) {
         switch (t) {
