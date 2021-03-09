@@ -10,21 +10,11 @@ public final class ResizableArrayStack<T> implements StackInterface<T> {
     private static final int DEFAULT_CAPACITY = 50;
     private static final int MAX_CAPACITY = 10000;
     
-    public void ArrayStack() {
-        ArrayStack(DEFAULT_CAPACITY);
+    public ResizableArrayStack() {
+        this(DEFAULT_CAPACITY);
     } // end default constructor
     
-    public void checkIntegrity() {
-        if (!integrityOK)
-            throw new SecurityException("ArrayBag object is corrupt.");
-    }
-    
-    private void checkCapacity(int capacity) {
-        if (capacity > MAX_CAPACITY)
-            throw new IllegalStateException("Attempt to create a bag whose capacity exceeds allowed maximum of " + MAX_CAPACITY);
-    }
-    
-    public void ArrayStack(int initialCapacity) {
+    public ResizableArrayStack(int initialCapacity) {
         integrityOK = false;
         checkCapacity(initialCapacity);
         
@@ -35,6 +25,16 @@ public final class ResizableArrayStack<T> implements StackInterface<T> {
         topIndex = -1;
         integrityOK = true;
     } // end constructor
+    
+    public void checkIntegrity() {
+        if (!integrityOK)
+            throw new SecurityException("ArrayBag object is corrupt.");
+    }
+    
+    private void checkCapacity(int capacity) {
+        if (capacity > MAX_CAPACITY)
+            throw new IllegalStateException("Attempt to create a bag whose capacity exceeds allowed maximum of " + MAX_CAPACITY);
+    }
     
     public void push(T newCharacter) {
         checkIntegrity();
