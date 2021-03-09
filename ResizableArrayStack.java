@@ -28,12 +28,12 @@ public final class ResizableArrayStack<T> implements StackInterface<T> {
     
     public void checkIntegrity() {
         if (!integrityOK)
-            throw new SecurityException("ArrayBag object is corrupt.");
+            throw new SecurityException("ArrayStack object is corrupt.");
     }
     
     private void checkCapacity(int capacity) {
         if (capacity > MAX_CAPACITY)
-            throw new IllegalStateException("Attempt to create a bag whose capacity exceeds allowed maximum of " + MAX_CAPACITY);
+            throw new IllegalStateException("Attempt to create a stack whose capacity exceeds allowed maximum of " + MAX_CAPACITY);
     }
     
     public void push(T newCharacter) {
