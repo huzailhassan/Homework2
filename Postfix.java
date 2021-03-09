@@ -73,13 +73,19 @@ public class Postfix {
         postfixExpression = postfixExpression.replaceAll("\\s+", "");
         char[] postfixExpressionChars = postfixExpression.toCharArray();
         ResizableArrayStack<Double> valueStack = new ResizableArrayStack<>();
-        
+        String nextNumber = "";
+    
         for (int i = 0; i < postfixExpressionChars.length; i++) {
             char nextCharacter = postfixExpressionChars[i];
             
-            if (Character.getType(nextCharacter) == 9) {    // type 9: number
-                valueStack.push((double) Character.getNumericValue(nextCharacter));
+            if (Character.getType(nextCharacter) == 9) {    // type 9: numeral
+                nextNumber += nextCharacter;
+                continue;
+            } else if(!nextNumber.isEmpty()){
+                valueStack.push(Double.parseDouble(nextNumber));
+                nextNumber = "";
             }
+            
             double operandTwo;
             double operandOne;
             double result;
