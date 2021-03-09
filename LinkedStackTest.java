@@ -6,6 +6,7 @@ public class LinkedStackTest {
     static final String GIVEN_INFIX_EXPRESSION = "a * b / (c - a) + d * e";
     static final String EXPECTED_GIVEN = "ab*ca-/de*+";
     
+    // Testing using tab (\t) and newline (\r, \n) chars as well
     static final String INFIX_TRAILING = GIVEN_INFIX_EXPRESSION + "\t\r\n  \t\r\n     \t\r\n";
     
     static final String INFIX_LEADING = "\t\r\n  \t\r\n     \t\r\n" + GIVEN_INFIX_EXPRESSION;
