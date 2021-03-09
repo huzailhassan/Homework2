@@ -70,7 +70,6 @@ public class Postfix {
     }
     
     public static double evaluatePosfix(String postfixExpression) {
-        postfixExpression = postfixExpression.replaceAll("\\s+", "");
         char[] postfixExpressionChars = postfixExpression.toCharArray();
         ResizableArrayStack<Double> valueStack = new ResizableArrayStack<>();
         String nextNumber = "";
@@ -115,11 +114,13 @@ public class Postfix {
                     operandOne = valueStack.pop();
                     result = operandOne / operandTwo;
                     valueStack.push(result);
+                    break;
                 case '^':
                     operandTwo = valueStack.pop();
                     operandOne = valueStack.pop();
                     result = Math.pow(operandOne, operandTwo);
                     valueStack.push(result);
+                    break;
                 
                 default:
                     break; // Ignore unexpected characters
