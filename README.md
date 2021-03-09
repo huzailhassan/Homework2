@@ -1,4 +1,4 @@
-# Postfix Expression - CS 2400 Project 1
+# Postfix Expression - CS 2400 Project 2
 Huzail Hassan and Amar Gandhi | CS 2400.04
 
 ## JUnit Testing
