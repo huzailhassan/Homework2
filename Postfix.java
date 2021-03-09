@@ -62,4 +62,62 @@ public class Postfix {
         
         return postFix;
     }
+    
+    public static double evaluatePosfix(String postfixExpression) {
+        postfixExpression = postfixExpression.replaceAll("\\s+", "");
+        char[] postfixExpressionChars = postfixExpression.toCharArray();
+        ResizableArrayStack<Double> valueStack = new ResizableArrayStack<>();
+        
+        for (int i = 0; i < postfixExpressionChars.length; i++) {
+            char nextCharacter = postfixExpressionChars[i];
+            
+            if (Character.getType(nextCharacter) == 9) {    // type 9: number
+                valueStack.push((double) Character.getNumericValue(nextCharacter));
+            }
+            double operandTwo;
+            double operandOne;
+            double result;
+            
+            switch (nextCharacter) {
+                
+                case '+':
+                    operandTwo = valueStack.pop();
+                    operandOne = valueStack.pop();
+                    result = operandOne + operandTwo;
+                    valueStack.push(result);
+                    break;
+                case '-':
+                    operandTwo = valueStack.pop();
+                    operandOne = valueStack.pop();
+                    result = operandOne - operandTwo;
+                    valueStack.push(result);
+                    break;
+                case '*':
+                    operandTwo = valueStack.pop();
+                    operandOne = valueStack.pop();
+                    result = operandOne * operandTwo;
+                    valueStack.push(result);
+                    break;
+                case '/':
+                    operandTwo = valueStack.pop();
+                    operandOne = valueStack.pop();
+                    result = operandOne / operandTwo;
+                    valueStack.push(result);
+                case '^':
+                    operandTwo = valueStack.pop();
+                    operandOne = valueStack.pop();
+                    result = Math.pow(operandOne, operandTwo);
+                    valueStack.push(result);
+                
+                default:
+                    break; // Ignore unexpected characters
+                
+            }
+        }
+
+        return valueStack.peek();
+        
+    }
+    
+    
 }
