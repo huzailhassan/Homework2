@@ -1,5 +1,11 @@
 public class Postfix {
     
+    /**
+     * Helper method for {@link #convertToPostfix}. Checks operator precedence
+     * based on input char. + and - are 1, * and / are 2, ^ is 3.
+     *
+     * @return The operator precedence.
+     */
     private static int precedence(Character t) {
         switch (t) {
             case '+':
