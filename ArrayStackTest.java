@@ -17,17 +17,17 @@ public class ArrayStackTest {
     }
 
     @Test
-    public void evaluatePosfix_Given() {
-        assertEquals(EXPECTED_GIVEN, Postfix.evaluatePosfix(GIVEN_INFIX_EXPRESSION));
+    public void evaluatePostfix_Given() {
+        assertEquals(EXPECTED_GIVEN, Postfix.evaluatePostfix(GIVEN_INFIX_EXPRESSION));
     }
 
     @Test
-    public void evaluatePosfix_Given_2() {
-        assertEquals(EXPECTED_GIVEN_2, Postfix.evaluatePosfix(GIVEN_INFIX_EXPRESSION_2));
+    public void evaluatePostfix_Given_2() {
+        assertEquals(EXPECTED_GIVEN_2, Postfix.evaluatePostfix(GIVEN_INFIX_EXPRESSION_2));
     }
 
     @Test
-    public void evaluatePosfix_Given_3() {
-        assertEquals(EXPECTED_GIVEN_3, Postfix.evaluatePosfix(GIVEN_INFIX_EXPRESSION_3));
+    public void evaluatePostfix_Given_3() {
+        assertEquals(EXPECTED_GIVEN_3, Postfix.evaluatePostfix(GIVEN_INFIX_EXPRESSION_3));
     }
 }

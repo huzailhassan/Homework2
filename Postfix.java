@@ -69,7 +69,7 @@ public class Postfix {
         return postFix;
     }
     
-    public static double evaluatePosfix(String postfixExpression) {
+    public static double evaluatePostfix(String postfixExpression) {
         char[] postfixExpressionChars = postfixExpression.toCharArray();
         ResizableArrayStack<Double> valueStack = new ResizableArrayStack<>();
         String nextNumber = "";
