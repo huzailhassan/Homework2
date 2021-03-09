@@ -16,17 +16,17 @@ public class LinkedStackTest {
     
     @Test
     public void convertToPostfix_Given() {
-        assertEquals(EXPECTED_GIVEN, Converter.convertToPostfix(GIVEN_INFIX_EXPRESSION.toCharArray()));
+        assertEquals(EXPECTED_GIVEN, Postfix.convertToPostfix(GIVEN_INFIX_EXPRESSION.toCharArray()));
     }
     
     @Test
     public void convertToPostfix_TrailingWhitespace() {
-        assertEquals(EXPECTED_GIVEN, Converter.convertToPostfix(INFIX_TRAILING.toCharArray()));
+        assertEquals(EXPECTED_GIVEN, Postfix.convertToPostfix(INFIX_TRAILING.toCharArray()));
     }
     
     @Test
     public void convertToPostfix_LeadingWhitespace() {
-        assertEquals(EXPECTED_GIVEN, Converter.convertToPostfix(INFIX_LEADING.toCharArray()));
+        assertEquals(EXPECTED_GIVEN, Postfix.convertToPostfix(INFIX_LEADING.toCharArray()));
     }
     
 }

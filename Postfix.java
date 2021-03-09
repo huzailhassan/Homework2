@@ -1,4 +1,4 @@
-public class Converter {
+public class Postfix {
     
     private static int precedence(Character t) {
         switch (t) {
